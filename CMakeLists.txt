@@ -8,4 +8,6 @@ add_executable(DStests main.cpp
         tree.cpp
         arraybasedlist.h
         stack.h
+        myqueue.h
+        queuebutcircular.h
 )

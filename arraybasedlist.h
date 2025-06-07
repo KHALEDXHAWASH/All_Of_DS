@@ -15,6 +15,21 @@ protected:
     int maxSize;      // to store the maximum size of the list زنا
 
 public:
+            arrayListType(int size)
+    {
+        if (size <= 0)
+        {
+            cerr << "Size must be positive. Setting to 100." << endl;
+            maxSize = 100;
+        }
+        else
+        {
+            maxSize = size;
+        }
+
+        length = 0;
+        list = new T[maxSize];
+    }
     bool isEmpty() const
     {
         return(length == 0);
@@ -171,21 +186,7 @@ public:
         }
     }
 
-    arrayListType(int size)
-    {
-        if (size <= 0)
-        {
-            cerr << "Size must be positive. Setting to 100." << endl;
-            maxSize = 100;
-        }
-        else
-        {
-            maxSize = size;
-        }
 
-        length = 0;
-        list = new T[maxSize];
-    }
 
     arrayListType(const arrayListType<T>& otherList)
     {

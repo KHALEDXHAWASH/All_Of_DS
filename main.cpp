@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
 
 #include "arraybasedlist.h"
 #include "stack.h"
-#include "sorting.cpp" // Assume it's implemented or ask me to write it
+#include "sorting.cpp"
+
+#include "myqueue.h"
+#include "queuebutcircular.h"
 
 template<typename T>
 void arrayListMenu() {
@@ -92,6 +93,98 @@ void stackMenu() {
 }
 
 template<typename T>
+void linearQueueMenu() {
+    int size;
+    cout << "Enter queue size: ";
+    cin >> size;
+    LinearQueue<T> queue(size);
+
+    int choice, item;
+    do {
+        cout << "\nLinear Queue Menu:\n";
+        cout << "1. Enqueue\n";
+        cout << "2. Dequeue\n";
+        cout << "3. Peek\n";
+        cout << "4. Check if empty\n";
+        cout << "5. Check if full\n";
+        cout << "6. Get size\n";
+        cout << "7. Back to main menu\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter item to enqueue: ";
+                cin >> item;
+                queue.enqueue(item);
+                break;
+            case 2:
+                queue.dequeue();
+                cout << "Item dequeued\n";
+                break;
+            case 3:
+                cout << "Front item: " << queue.peek() << endl;
+                break;
+            case 4:
+                cout << (queue.empty() ? "Queue is empty" : "Queue is not empty") << endl;
+                break;
+            case 5:
+                cout << (queue.full() ? "Queue is full" : "Queue is not full") << endl;
+                break;
+            case 6:
+                cout << "Current size: " << queue.size() << endl;
+                break;
+        }
+    } while (choice != 7);
+}
+
+template<typename T>
+void circularQueueMenu() {
+    int size;
+    cout << "Enter queue size: ";
+    cin >> size;
+    CircularQueue<T> queue(size);
+
+    int choice, item;
+    do {
+        cout << "\nCircular Queue Menu:\n";
+        cout << "1. Enqueue\n";
+        cout << "2. Dequeue\n";
+        cout << "3. Peek\n";
+        cout << "4. Check if empty\n";
+        cout << "5. Check if full\n";
+        cout << "6. Get size\n";
+        cout << "7. Back to main menu\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter item to enqueue: ";
+                cin >> item;
+                queue.enqueue(item);
+                break;
+            case 2:
+                queue.dequeue();
+                cout << "Item dequeued\n";
+                break;
+            case 3:
+                cout << "Front item: " << queue.peek() << endl;
+                break;
+            case 4:
+                cout << (queue.empty() ? "Queue is empty" : "Queue is not empty") << endl;
+                break;
+            case 5:
+                cout << (queue.full() ? "Queue is full" : "Queue is not full") << endl;
+                break;
+            case 6:
+                cout << "Current size: " << queue.getSize() << endl;
+                break;
+        }
+    } while (choice != 7);
+}
+
+template<typename T>
 void sortingMenu() {
     int n, choice;
     cout << "Enter number of elements: ";
@@ -155,8 +248,10 @@ int main() {
         cout << "\n--- Main Menu ---\n";
         cout << "1. Array-Based List\n";
         cout << "2. Stack\n";
-        cout << "3. Sorting System\n";
-        cout << "4. Exit\n";
+        cout << "3. Linear Queue\n";
+        cout << "4. Circular Queue\n";
+        cout << "5. Sorting System\n";
+        cout << "6. Exit\n";
         cout << "Enter your choice: ";
         cin >> mainChoice;
 
@@ -168,16 +263,22 @@ int main() {
                 stackMenu<int>();
                 break;
             case 3:
-                sortingMenu<int>();
+                linearQueueMenu<int>();
                 break;
             case 4:
-                cout << "TJA\n";
+                circularQueueMenu<int>();
+                break;
+            case 5:
+                sortingMenu<int>();
+                break;
+            case 6:
+                cout << "Goodbye!\n";
                 break;
             default:
                 cout << "Invalid choice!\n";
         }
 
-    } while (mainChoice != 4);
+    } while (mainChoice != 6);
 
     return 0;
 }
