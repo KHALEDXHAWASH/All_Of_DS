@@ -20,7 +20,7 @@ private:
         b=a-b;
         a=a-b;
     };
-    void heapify(int i){
+    void heapify(int i, int size){
         int l= left(i);
         int r= right(i);
         int largest=i;
@@ -33,11 +33,11 @@ private:
         if(largest==i)
             return;
         else
-            heapify(largest);
+            heapify(largest,size);
     }
     void build_heap(){
         for(int i=size/2;i>=1;i--)
-            heapify(i);
+            heapify(i,size);
     }
 
     void bubbleUp(int i) {
@@ -72,6 +72,13 @@ public:
     void increaseKey(int i, int newKey){
         heap[i]=newKey;
         bubbleUp(i);
+    }
+    void heapSort(int arr[], int n) {
+        build_heap();
+        for (int i = n - 1; i > 0; i--) {
+            swap(arr[0], arr[i]);
+            heapify(0,i-1);
+        }
     }
     int getMax(){
         return heap[1];
