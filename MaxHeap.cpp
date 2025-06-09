@@ -73,10 +73,10 @@ public:
         heap[i]=newKey;
         bubbleUp(i);
     }
-    void heapSort(int arr[], int n) {
+    void heapSort() {
         build_heap();
         for (int i = n - 1; i > 0; i--) {
-            swap(arr[0], arr[i]);
+            swap(heap[0], heap[i]);
             heapify(0,i-1);
         }
     }
