@@ -2,10 +2,10 @@
 #include "arraybasedlist.h"
 #include "stack.h"
 #include "sorting.cpp"
-
+#include "AVL.cpp"
+#include "tree.cpp"
 #include "myqueue.h"
 #include "queuebutcircular.h"
-
 template<typename T>
 void arrayListMenu() {
     int size;
@@ -88,6 +88,71 @@ void stackMenu() {
             case 5:
                 cout << stack << endl;
                 break;
+        }
+    } while (choice != 6);
+}
+void addressBookMenu() {
+    AddressBook book;
+    int choice;
+
+    do {
+        cout << "\n--- Address Book Menu ---\n";
+        cout << "1. Add Contact\n";
+        cout << "2. Delete Contact\n";
+        cout << "3. Search Contact\n";
+        cout << "4. View All Contacts (In-Order)\n";
+        cout << "5. Display Tree Structure\n";
+        cout << "6. Back to main menu\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                int id;
+                string name, phone, email;
+                cout << "Enter ID: ";
+                cin >> id;
+                cin.ignore();
+                cout << "Enter Name: ";
+                getline(cin, name);
+                cout << "Enter Phone: ";
+                getline(cin, phone);
+                cout << "Enter Email: ";
+                getline(cin, email);
+                book.insert(id, Credentials(name, phone, email));
+                break;
+            }
+            case 2: {
+                int id;
+                cout << "Enter ID to delete: ";
+                cin >> id;
+                book.erase(id);
+                break;
+            }
+            case 3: {
+                int id;
+                cout << "Enter ID to search: ";
+                cin >> id;
+                Contact* result = book.search(id);
+                if (result) {
+                    cout << "Found Contact - Name: " << result->data.name
+                         << ", Phone: " << result->data.phone
+                         << ", Email: " << result->data.email << endl;
+                }
+                break;
+            }
+            case 4:
+                cout << "\nAll Contacts (In-Order Traversal):\n";
+                book.inOrderView();
+                break;
+            case 5:
+                cout << "\nTree Structure:\n";
+                book.displayStructure();
+                break;
+            case 6:
+                break;
+            default:
+                cout << "Invalid choice!\n";
         }
     } while (choice != 6);
 }
@@ -244,6 +309,8 @@ void sortingMenu() {
 
 int main() {
     int mainChoice;
+
+
     do {
         cout << "\n--- Main Menu ---\n";
         cout << "1. Array-Based List\n";
@@ -251,7 +318,8 @@ int main() {
         cout << "3. Linear Queue\n";
         cout << "4. Circular Queue\n";
         cout << "5. Sorting System\n";
-        cout << "6. Exit\n";
+        cout << "6. Address Book (AVL Tree)\n";
+        cout << "7. Exit\n";
         cout << "Enter your choice: ";
         cin >> mainChoice;
 
@@ -272,13 +340,17 @@ int main() {
                 sortingMenu<int>();
                 break;
             case 6:
-                cout << "Goodbye!\n";
+                addressBookMenu();
                 break;
+            case 7:
+                cout << "Goodbye :)\n";
+                return 0;
             default:
                 cout << "Invalid choice!\n";
         }
 
-    } while (mainChoice != 6);
+    } while (mainChoice != 8);
 
     return 0;
 }
+
