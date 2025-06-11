@@ -66,7 +66,7 @@ public:
         if(size==0) return -1;
         int max=heap[1];
         heap[1]=heap[size--];
-        heapify(1);
+        heapify(1,size);
         return max;
     }
     void increaseKey(int i, int newKey){
@@ -75,7 +75,7 @@ public:
     }
     void heapSort() {
         build_heap();
-        for (int i = n - 1; i > 0; i--) {
+        for (int i = size - 1; i > 0; i--) {
             swap(heap[0], heap[i]);
             heapify(0,i-1);
         }
