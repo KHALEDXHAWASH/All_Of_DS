@@ -309,7 +309,7 @@ void sortingMenu() {
 
 int main() {
     int mainChoice;
-    BST<int> bst;  // كائن رئيسي للشجرة
+
 
     do {
         cout << "\n--- Main Menu ---\n";
@@ -319,8 +319,7 @@ int main() {
         cout << "4. Circular Queue\n";
         cout << "5. Sorting System\n";
         cout << "6. Address Book (AVL Tree)\n";
-        cout << "7. Binary Search Tree (BST)\n";
-        cout << "8. Exit\n";
+        cout << "7. Exit\n";
         cout << "Enter your choice: ";
         cin >> mainChoice;
 
@@ -344,11 +343,8 @@ int main() {
                 addressBookMenu();
                 break;
             case 7:
-                bstMenu(bst);
-                break;
-            case 8:
-                cout << "Goodbye!\n";
-                break;
+                cout << "Goodbye :)\n";
+                return 0;
             default:
                 cout << "Invalid choice!\n";
         }

@@ -233,82 +233,82 @@ public:
         cout << endl;
     }
 };
-template<typename T>
-void bstMenu(BST<T>& bst) {
-    int choice;
-    T value;
-
-    do {
-        cout << "\nBST Menu:\n";
-        cout << "1. Insert\n";
-        cout << "2. Search\n";
-        cout << "3. Delete by Copying\n";
-        cout << "4. Inorder Traversal\n";
-        cout << "5. Preorder Traversal\n";
-        cout << "6. Postorder Traversal\n";
-        cout << "7. Display Tree Structure\n";
-        cout << "8. Back to main menu\n";
-        cout << "Enter choice: ";
-        cin >> choice;
-
-        switch (choice) {
-            case 1:
-                cout << "Enter value to insert: ";
-                cin >> value;
-                bst.insert(value);
-                break;
-            case 2: {
-                cout << "Enter value to search: ";
-                cin >> value;
-                T* result = bst.search(value);
-                if (result)
-                    cout << "Value found: " << *result << endl;
-                else
-                    cout << "Value not found.\n";
-                break;
-            }
-            case 3:
-                cout << "Enter value to delete: ";
-                cin >> value;
-                {
-                    BSTNode<T>*& root = bst.getRoot();
-                    BSTNode<T>* node = root;
-                    BSTNode<T>** parentLink = &root;
-
-                    while (node && node->getKey() != value) {
-                        if (value < node->getKey()) {
-                            parentLink = &(node->getLeft());
-                            node = node->getLeft();
-                        } else {
-                            parentLink = &(node->getRight());
-                            node = node->getRight();
-                        }
-                    }
-
-                    if (node) {
-                        bst.deleteByCopying(*parentLink);
-                        cout << "Deleted.\n";
-                    } else {
-                        cout << "Value not found.\n";
-                    }
-                }
-                break;
-            case 4:
-                bst.inorder(bst.getRoot());
-                cout << endl;
-                break;
-            case 5:
-                bst.preorder(bst.getRoot());
-                cout << endl;
-                break;
-            case 6:
-                bst.postorder(bst.getRoot());
-                cout << endl;
-                break;
-            case 7:
-                bst.print();
-                break;
-        }
-    } while (choice != 8);
-}
-
+//template<typename T>
+//void bstMenu(BST<T>& bst) {
+//    int choice;
+//    T value;
+//
+//    do {
+//        cout << "\nBST Menu:\n";
+//        cout << "1. Insert\n";
+//        cout << "2. Search\n";
+//        cout << "3. Delete by Copying\n";
+//        cout << "4. Inorder Traversal\n";
+//        cout << "5. Preorder Traversal\n";
+//        cout << "6. Postorder Traversal\n";
+//        cout << "7. Display Tree Structure\n";
+//        cout << "8. Back to main menu\n";
+//        cout << "Enter choice: ";
+//        cin >> choice;
+//
+//        switch (choice) {
+//            case 1:
+//                cout << "Enter value to insert: ";
+//                cin >> value;
+//                bst.insert(value);
+//                break;
+//            case 2: {
+//                cout << "Enter value to search: ";
+//                cin >> value;
+//                T* result = bst.search(value);
+//                if (result)
+//                    cout << "Value found: " << *result << endl;
+//                else
+//                    cout << "Value not found.\n";
+//                break;
+//            }
+//            case 3:
+//                cout << "Enter value to delete: ";
+//                cin >> value;
+//                {
+//                    BSTNode<T>*& root = bst.getRoot();
+//                    BSTNode<T>* node = root;
+//                    BSTNode<T>** parentLink = &root;
+//
+//                    while (node && node->getKey() != value) {
+//                        if (value < node->getKey()) {
+//                            parentLink = &(node->getLeft());
+//                            node = node->getLeft();
+//                        } else {
+//                            parentLink = &(node->getRight());
+//                            node = node->getRight();
+//                        }
+//                    }
+//
+//                    if (node) {
+//                        bst.deleteByCopying(*parentLink);
+//                        cout << "Deleted.\n";
+//                    } else {
+//                        cout << "Value not found.\n";
+//                    }
+//                }
+//                break;
+//            case 4:
+//                bst.inorder(bst.getRoot());
+//                cout << endl;
+//                break;
+//            case 5:
+//                bst.preorder(bst.getRoot());
+//                cout << endl;
+//                break;
+//            case 6:
+//                bst.postorder(bst.getRoot());
+//                cout << endl;
+//                break;
+//            case 7:
+//                bst.print();
+//                break;
+//        }
+//    } while (choice != 8);
+//}
+//
