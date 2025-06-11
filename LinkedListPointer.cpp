@@ -86,20 +86,20 @@ ostream &operator<<(ostream &out, const SortedLinkedList &List) {
     Node *current = List.head;
 
     if (!current) {
-        cout << "The list is empty !\n";
+        out << "[ Empty List ]";
         return out;
     }
 
-    out << "[";
-    while (current->link != nullptr) {
-        out << current->data << ", ";
+    out << "[ ";
+    while (current != nullptr) {
+        out << current->data;
+        if (current->link != nullptr) out << " -> ";
         current = current->link;
     }
-
-    out << current->data;
-    out << "]\n";
+    out << " ]";
     return out;
 }
+
 
 SortedLinkedList::~SortedLinkedList() {
     Node *current = head;
