@@ -10,10 +10,9 @@ template <class T>
 class arrayListType
         {
 protected:
-    T* list;   // كلنا اراي بضين بس ديناميك
-    int length;       // to store the length of the list زناااا
-    int maxSize;      // to store the maximum size of the list زنا
-
+    T* list;
+    int length;
+    int maxSize;
 public:
             arrayListType(int size)
     {
@@ -155,8 +154,8 @@ public:
     {
         int loc;
 
-        if (length == 0) //list is empty
-            list[length++] = insertItem; //insert the item and increment the length
+        if (length == 0)
+            list[length++] = insertItem;
         else if (length == maxSize)
             cerr << "Cannot insert in a full list." << endl;
         else
