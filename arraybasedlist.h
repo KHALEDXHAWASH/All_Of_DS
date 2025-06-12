@@ -64,12 +64,12 @@ public:
     {
         if (location<0||location>=maxSize)
         {
-            cerr<<"suck ma balls this is ass";
+            cerr<<"error";
 
         }
         else {
             if(length>= maxSize){
-                cerr<<"suck ma balls again ";
+                cerr<<"error ";
 
             }
             else{
@@ -86,7 +86,7 @@ public:
     void insertEnd(const T& insertItem)
     {
         if(length>= maxSize){
-            cerr<<"suck ma balls again ";
+            cerr<<"error";
 
         }else{
         list[length]=insertItem;
@@ -96,7 +96,7 @@ public:
     void removeAt(int location)
     {if (location<0||location>=length)
         {
-            cerr<<"suck ma balls this is ass";
+            cerr<<"error";
 
         }else
             for (int i = location ;i <length-1 ; ++i)
@@ -108,7 +108,7 @@ public:
     {
         if (location<0||location>=length)
         {
-            cerr<<"suck ma balls this is ass";
+            cerr<<"error";
 
         }
         else
@@ -118,7 +118,7 @@ public:
     void replaceAt(int location, const T& repItem)
     {if (location<0||location>=length)
         {
-            cerr<<"suck ma balls this is ass";
+            cerr<<"error";
 
         }
         else
